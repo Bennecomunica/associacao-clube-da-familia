@@ -1,0 +1,91 @@
+/* Associação Clube da Família — estilos compartilhados */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#ffffff}
+a{color:#3A58C4}a:hover{color:#1E2A5A}
+a:focus-visible,button:focus-visible{outline:3px solid #5C7CE6;outline-offset:3px}
+::selection{background:#F8D2D2;color:#1E2A5A}
+
+/* cartões e botões */
+.lift{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.lift:hover{transform:translateY(-6px)}
+.btn{transition:transform .2s,background-color .2s,box-shadow .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn-red:hover{background-color:#B91F24 !important;color:#ffffff !important}
+.btn-ghost:hover{background-color:#EEF2FD !important;color:#1E2A5A !important}
+.btn-white:hover{background-color:#FDECEC !important;color:#B91F24 !important}
+.btn-blue:hover{background-color:#2F4BAE !important;color:#ffffff !important}
+.arrow{transition:transform .25s}
+.lift:hover .arrow,.btn:hover .arrow{transform:translateX(5px)}
+.chip{transition:background-color .2s,color .2s,border-color .2s}
+.chip:hover{border-color:#5C7CE6 !important}
+.field{transition:border-color .2s,box-shadow .2s}
+.field:focus{outline:none;border-color:#5C7CE6 !important;box-shadow:0 0 0 4px #DCE4FB}
+
+/* navegação */
+.nav{transition:background-color .2s,color .2s}
+.nav:hover{background-color:#EEF2FD;color:#1E2A5A !important}
+.nav-desktop{display:flex}
+.nav-toggle{display:none}
+.menu-mobile a{transition:background-color .2s}
+.menu-mobile a:hover{background-color:#EEF2FD}
+@media (max-width: 860px){
+  .nav-desktop{display:none}
+  .nav-toggle{display:inline-flex}
+}
+@keyframes drop{from{opacity:0;translate:0 -8px}to{opacity:1;translate:0 0}}
+.menu-mobile{animation:drop .25s ease-out both}
+
+/* galeria */
+.tile{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.tile:hover{transform:scale(1.02) rotate(-0.4deg)}
+.tile .zoom{opacity:0;transition:opacity .25s}
+.tile:hover .zoom,.tile:focus-visible .zoom{opacity:1}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;scale:.94}to{opacity:1;scale:1}}
+.lightbox{animation:fade .2s ease-out both}
+.lightbox-figure{animation:pop .3s cubic-bezier(.2,.8,.2,1) both}
+.lb-btn{transition:background-color .2s}
+.lb-btn:hover{background-color:#3A4470 !important}
+
+/* botões flutuantes */
+@keyframes pulse{0%,70%,100%{scale:1}80%{scale:1.07}90%{scale:.98}}
+.fab-wa{animation:pulse 2.6s ease-out infinite}
+@media (max-width: 560px){.fab-label{display:none}}
+
+/* formas orgânicas */
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-12px) rotate(6deg)}}
+@keyframes drift{0%,100%{border-radius:58% 42% 55% 45% / 46% 58% 42% 54%}50%{border-radius:44% 56% 42% 58% / 56% 42% 58% 44%}}
+.float{animation:floaty 5s ease-in-out infinite}
+.blob{animation:drift 14s ease-in-out infinite}
+
+/* entrada ao rolar a página (navegadores compatíveis) */
+@keyframes rise{from{opacity:0;translate:0 36px}to{opacity:1;translate:0 0}}
+@keyframes appear{from{opacity:0;scale:.6}to{opacity:1;scale:1}}
+@supports (animation-timeline: view()){
+  h2,.lift,article,.tile{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+  .fab-top{animation:appear linear both;animation-timeline:scroll(root);animation-range:0 400px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .float,.blob,.fab-wa,.menu-mobile,.lightbox,.lightbox-figure{animation:none}
+  h2,.lift,article,.tile,.fab-top{animation:none}
+  .lift,.btn,.arrow,.tile{transition:none}
+  .fab-wa{animation:none}
+}
+
+/* linha do tempo */
+.tl-scroll{scrollbar-width:thin;scrollbar-color:#C9D5F8 #EEF2FD}
+.tl-hint{display:none}
+.tl-dot{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.tl-item:hover .tl-dot{transform:scale(1.18)}
+@media (max-width: 1100px){.tl-hint{display:inline-flex}}
+@media (prefers-reduced-motion: reduce){.tl-dot{transition:none}}
+
+/* WhatsApp verde neon */
+.btn-neon:hover{background-color:#14E05A !important;color:#0E132A !important}
+
+/* elementos ocultos */
+[hidden]{display:none !important}
